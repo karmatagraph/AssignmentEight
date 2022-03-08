@@ -47,6 +47,7 @@ class ViewController: UIViewController {
             ageTextfield.isHidden = true
             salTextfield.isHidden = true
             typeTextfield.isHidden = true
+            nextBtn.setTitle("Done",for: .normal)
         }
         
 //        inputErrorLbl.isHidden = true

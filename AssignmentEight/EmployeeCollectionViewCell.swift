@@ -14,9 +14,9 @@ class EmployeeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var typeLbl: UILabel!
     
     func setup(emp: Employee){
-        nameLbl.text = emp.name
-        ageLbl.text = String(emp.age)
-        salaryLbl.text = String(emp.salary)
-        typeLbl.text = emp.type
+        nameLbl.text = "Name: \(emp.name)"
+        ageLbl.text = "Age: \(String(emp.age))"
+        salaryLbl.text = "Salary: \(String(emp.salary))"
+        typeLbl.text = "Type: \(emp.type)"
     }
 }
