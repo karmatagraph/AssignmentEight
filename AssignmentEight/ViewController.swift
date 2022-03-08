@@ -28,10 +28,12 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        resetForm()
         // Do any additional setup after loading the view.
     }
 
     func resetForm(){
+        
         if(empCount < 4 ){
             nameTextfield.text = ""
             ageTextfield.text = ""
@@ -57,30 +59,40 @@ class ViewController: UIViewController {
         if(empCount < 4 ){
             let name = nameTextfield.text!
             let ageT = ageTextfield.text!
-            var age = 0
+            var age = Int(ageT)
             let salT = salTextfield.text!
             var salary = 0.0
             let type = typeTextfield.text!
-            
-            let salSet = CharacterSet(charactersIn: salT)
-            let ageSet = CharacterSet(charactersIn: ageT)
-    //        && !CharacterSet.decimalDigits.isSuperset(of: ageSet)
-            if (!CharacterSet.decimalDigits.isSuperset(of: salSet) ){
-                // not empty
-                age = Int(ageT)!
-                salary = Double(salT)!
-                let emp1 = Employee(name: name, age: age, salary: salary, type: type)
-                emp.append(emp1)
-                empCount = empCount + 1
-                resetForm()
-                print("the value in the array is: \(emp)")
-                
+            if(age! > 20 && age! < 80){
+                let salSet = CharacterSet(charactersIn: salT)
+    //            let ageSet = CharacterSet(charactersIn: ageT)
+        //        && !CharacterSet.decimalDigits.isSuperset(of: ageSet)
+                if (!CharacterSet.decimalDigits.isSuperset(of: salSet) ){
+                    
+                    // not empty
+                    age = Int(ageT)!
+                    salary = Double(salT)!
+                    let emp1 = Employee(name: name, age: age!, salary: salary, type: type)
+                    emp.append(emp1)
+                    empCount = empCount + 1
+                    resetForm()
+                    print("the value in the array is: \(emp)")
+                    
+                }else{
+                    inputErrorLbl.isHidden = false
+                    inputErrorLbl.text = "Please enter the valid inputs"
+                    print("error occured")
+                    resetForm()
+                }
             }else{
                 inputErrorLbl.isHidden = false
-                inputErrorLbl.text = "Please enter the valid inputs"
+                inputErrorLbl.text = "Please enter the valid age"
                 print("error occured")
                 resetForm()
             }
+           
+            
+           
         }else{
             // go to the next page the collection view
             
